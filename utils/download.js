@@ -19,7 +19,7 @@ export const download = async (req) => {
     return new Response(Buffer.from(cached.data), {
       headers: {
         "Content-Type": "video/mp4",
-        "Content-Disposition": `attachment; filename=${meta.title}.mp4`,
+        "Content-Disposition": `attachment; filename="${meta.title}.mp4"`,
       }
     });
   }
