@@ -14,5 +14,5 @@ export const sharedOptions = {
   preferFreeFormats: true,
   youtubeSkipDashManifest: true,
   noCheckCertificate: true,
-  referer: "https://www.youtube.com/",
+  referer: "https://www.youtube.com/"
 };
