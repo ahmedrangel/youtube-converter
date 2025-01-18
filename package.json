@@ -1,0 +1,10 @@
+{
+	"type": "module",
+	"devDependencies": {
+		"@whatwg-node/server": "^0.9.65",
+		"ioredis": "^5.4.2",
+		"itty-router": "^5.0.18",
+		"unstorage": "^1.14.4",
+		"youtube-dl-exec": "^3.0.13"
+	}
+}
