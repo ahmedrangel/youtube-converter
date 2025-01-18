@@ -45,10 +45,13 @@ export const download = async (req) => {
   await youtubeDL(url, {
     format: f,
     output: `${tmp}`,
+    bufferSize: "16K",
+    externalDownloader: "aria2c",
+    externalDownloaderArgs: "-x 16 -s 16 -k 1M --file-allocation=none",
+    mergeOutputFormat: "mp4",
     ...sharedOptions
   });
 
-  fs.renameSync(`${tmp}.mkv`, `${tmp}.mp4`);
   const file = fs.readFileSync(`${tmp}.mp4`);
   // Delete tmp file
   fs.unlinkSync(`${tmp}.mp4`);
