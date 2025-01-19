@@ -21,7 +21,8 @@ export const download = async (req) => {
     return new Response((toMp4Blob(Buffer.from(cached.data))), {
       headers: {
         "Content-Type": "video/mp4",
-        "Content-Disposition": "inline"
+        "Content-Disposition": "inline",
+        "Content-Length": meta.byteLength
       }
     });
   }
@@ -60,13 +61,14 @@ export const download = async (req) => {
   fs.unlinkSync(`${tmp}.mp4`);
   await Promise.all([
     storage.setItem(cacheKey, file, { ttl: 86400 }),
-    storage.setMeta(cacheKey, { title: encodeURIComponent(title) })
+    storage.setMeta(cacheKey, { title: encodeURIComponent(title), byteLength: file.byteLength })
   ]);
 
   return new Response(toMp4Blob(file), {
     headers: {
       "Content-Type": "video/mp4",
-      "Content-Disposition": "inline"
+      "Content-Disposition": "inline",
+      "Content-Length": file.byteLength
     }
   });
 };
