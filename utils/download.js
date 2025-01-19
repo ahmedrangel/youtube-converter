@@ -20,6 +20,7 @@ export const download = async (req) => {
   if (cached) {
     return new Response((toMp4Blob(Buffer.from(cached.data))), {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "video/mp4",
         "Content-Disposition": "inline",
         "Content-Length": meta.byteLength
@@ -66,6 +67,7 @@ export const download = async (req) => {
 
   return new Response(toMp4Blob(file), {
     headers: {
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": "video/mp4",
       "Content-Disposition": "inline",
       "Content-Length": file.byteLength
