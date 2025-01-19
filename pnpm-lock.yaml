@@ -23,9 +23,6 @@ importers:
       eslint-plugin-import:
         specifier: ^2.31.0
         version: 2.31.0(eslint@9.18.0)
-      ioredis:
-        specifier: ^5.4.2
-        version: 5.4.2
       itty-router:
         specifier: ^5.0.18
         version: 5.0.18
@@ -1377,7 +1374,8 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@ioredis/commands@1.2.0': {}
+  '@ioredis/commands@1.2.0':
+    optional: true
 
   '@jclem/logfmt2@2.4.3': {}
 
@@ -1618,7 +1616,8 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  cluster-key-slot@1.1.2: {}
+  cluster-key-slot@1.1.2:
+    optional: true
 
   color-convert@2.0.1:
     dependencies:
@@ -1709,7 +1708,8 @@ snapshots:
 
   defu@6.1.4: {}
 
-  denque@2.1.0: {}
+  denque@2.1.0:
+    optional: true
 
   destr@2.0.3: {}
 
@@ -2140,6 +2140,7 @@ snapshots:
       standard-as-callback: 2.1.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   iron-webcrypto@1.2.1: {}
 
@@ -2290,9 +2291,11 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
-  lodash.defaults@4.2.0: {}
+  lodash.defaults@4.2.0:
+    optional: true
 
-  lodash.isarguments@3.1.0: {}
+  lodash.isarguments@3.1.0:
+    optional: true
 
   lodash.merge@4.6.2: {}
 
@@ -2458,11 +2461,13 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  redis-errors@1.2.0: {}
+  redis-errors@1.2.0:
+    optional: true
 
   redis-parser@3.0.0:
     dependencies:
       redis-errors: 1.2.0
+    optional: true
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -2585,7 +2590,8 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  standard-as-callback@2.1.0: {}
+  standard-as-callback@2.1.0:
+    optional: true
 
   streamsearch@1.1.0: {}
 

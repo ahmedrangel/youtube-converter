@@ -9,7 +9,6 @@
 		"aws4fetch": "^1.0.20",
 		"eslint": "^9.18.0",
 		"eslint-plugin-import": "^2.31.0",
-		"ioredis": "^5.4.2",
 		"itty-router": "^5.0.18",
 		"unstorage": "^1.14.4",
 		"youtube-dl-exec": "^3.0.13"
