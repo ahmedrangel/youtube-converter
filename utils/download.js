@@ -22,7 +22,7 @@ export const download = async (req) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "video/mp4",
-        "Content-Disposition": "attachment",
+        "Content-Disposition": "inline",
         "Content-Length": meta.byteLength
       }
     });
@@ -69,7 +69,7 @@ export const download = async (req) => {
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "video/mp4",
-      "Content-Disposition": "attachment",
+      "Content-Disposition": "inline",
       "Content-Length": file.byteLength
     }
   });
