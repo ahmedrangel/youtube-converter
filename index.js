@@ -15,7 +15,7 @@ router.all("*", () =>
   Response.json({ success: false, error: "Route not found" }, { status: 404 })
 );
 
-const ittyServer = createServerAdapter(router.fetch);
+const ittyServer = createServerAdapter((req, env, ctx) => router.fetch(req, env, ctx));
 const httpServer = createServer(ittyServer);
 httpServer.listen(3033);
 console.info("Server running on http://localhost:3033");
