@@ -1,11 +1,17 @@
 import { createStorage } from "unstorage";
-import redisDriver from "unstorage/drivers/redis";
+import s3Driver from "unstorage/drivers/s3";
 
-const storage = createStorage(redisDriver({
-  base: "cache",
-  host: "localhost",
-  port: 6379
-}));
+process.loadEnvFile();
+
+const storage = createStorage({
+  driver: s3Driver({
+    accessKeyId: process.env.R2_ACCES_KEY_ID,
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY,
+    endpoint: process.env.R2_ENDPOINT,
+    bucket: "assets",
+    region: "auto"
+  })
+});
 
 export const useStorage = () => storage;
 

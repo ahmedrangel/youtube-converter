@@ -14,6 +14,9 @@ importers:
       '@whatwg-node/server':
         specifier: ^0.9.65
         version: 0.9.65
+      aws4fetch:
+        specifier: ^1.0.20
+        version: 1.0.20
       eslint:
         specifier: ^9.18.0
         version: 9.18.0
@@ -28,7 +31,7 @@ importers:
         version: 5.0.18
       unstorage:
         specifier: ^1.14.4
-        version: 1.14.4(ioredis@5.4.2)
+        version: 1.14.4(aws4fetch@1.0.20)(ioredis@5.4.2)
       youtube-dl-exec:
         specifier: ^3.0.13
         version: 3.0.13
@@ -222,6 +225,9 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  aws4fetch@1.0.20:
+    resolution: {integrity: sha512-/djoAN709iY65ETD6LKCtyyEI04XIBP5xVvfmNxsEP0uJB5tyaGBztSryRr4HqMStr9R06PisQE7m9zDTXKu6g==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -1542,6 +1548,8 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.0.0
 
+  aws4fetch@1.0.20: {}
+
   balanced-match@1.0.2: {}
 
   bin-version-check@6.0.0:
@@ -2709,7 +2717,7 @@ snapshots:
       node-fetch-native: 1.6.4
       pathe: 1.1.2
 
-  unstorage@1.14.4(ioredis@5.4.2):
+  unstorage@1.14.4(aws4fetch@1.0.20)(ioredis@5.4.2):
     dependencies:
       anymatch: 3.1.3
       chokidar: 3.6.0
@@ -2720,6 +2728,7 @@ snapshots:
       ofetch: 1.4.1
       ufo: 1.5.4
     optionalDependencies:
+      aws4fetch: 1.0.20
       ioredis: 5.4.2
 
   uri-js@4.4.1:

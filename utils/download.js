@@ -6,28 +6,19 @@ import { sharedOptions, useStorage } from "./helpers.js";
 
 const storage = useStorage();
 
-const toMp4Blob = (buffer) => new Blob([buffer], { type: "video/mp4" });
-
 export const download = async (req) => {
+  const cdnBase = "https://cdn.ahmedrangel.com";
   const { url } = req.query;
   const { quality } = req.params;
-  const cacheKey = `${encodeURIComponent(url)}:${encodeURIComponent(quality)}`;
   if (!url) return error(400, { error: "URL is required" });
+  const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?|live)\/|\S*?[?&]v=|shorts\/)?|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+  const id = url.match(regex)?.[1];
+  if (!id) return error(400, { error: "Invalid URL" });
+  const cacheKey = `videos/youtube/${id}.mp4`;
+  const itemUrl = cdnBase + "/" + cacheKey + "?t=" + Date.now();
+  const exists = await storage.hasItem(cacheKey);
+  if (exists) return { url: itemUrl };
   console.log(`Downloading ${url}`);
-
-  // Check if video is cached
-  const [cached, meta] = await Promise.all([storage.getItem(cacheKey), storage.getMeta(cacheKey)]);
-  if (cached) {
-    return new Response((toMp4Blob(Buffer.from(cached.data))), {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "video/mp4",
-        "Content-Disposition": "inline",
-        "Content-Length": meta.byteLength
-      }
-    });
-  }
-
 
   const info = await youtubeDL(url, {
     dumpJson: true,
@@ -58,19 +49,12 @@ export const download = async (req) => {
   });
 
   const file = fs.readFileSync(`${tmp}.mp4`);
+  const blob = new Blob([file], { type: "video/mp4" });
   // Delete tmp file
   fs.unlinkSync(`${tmp}.mp4`);
   await Promise.all([
-    storage.setItem(cacheKey, file, { ttl: 86400 }),
-    storage.setMeta(cacheKey, { title: encodeURIComponent(title), byteLength: file.byteLength })
+    storage.setItemRaw(cacheKey, blob)
   ]);
 
-  return new Response(toMp4Blob(file), {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "video/mp4",
-      "Content-Disposition": "inline",
-      "Content-Length": file.byteLength
-    }
-  });
+  return { url: itemUrl };
 };
