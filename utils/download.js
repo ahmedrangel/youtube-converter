@@ -21,7 +21,7 @@ export const download = async (req) => {
     return new Response((toMp4Blob(Buffer.from(cached.data))), {
       headers: {
         "Content-Type": "video/mp4",
-        "Content-Disposition": `attachment; filename="${meta.title}.mp4"`
+        "Content-Disposition": "inline"
       }
     });
   }
@@ -66,7 +66,7 @@ export const download = async (req) => {
   return new Response(toMp4Blob(file), {
     headers: {
       "Content-Type": "video/mp4",
-      "Content-Disposition": `attachment; filename="${encodeURIComponent(title)}.mp4"`
+      "Content-Disposition": "inline"
     }
   });
 };
