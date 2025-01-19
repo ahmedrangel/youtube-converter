@@ -39,7 +39,7 @@ export const download = async (req) => {
   const bestVideoFormatter = !qualityExists ? "ext=mp4" : type === "horizontal" ? `height<=${quality}` : `width<=${quality}`;
   const f = `bestvideo[${bestVideoFormatter}][vcodec^=avc1]+bestaudio[ext=m4a]`;
   // replace symbols with empty string
-  const fileName = `${title}${qualityExists ? `-${quality}p` : ""}`.replace(/[!?¿#@|]/g, "");
+  const fileName = `${title}${qualityExists ? `-${quality}p` : ""}`.replaceAll(" ", "").replace(/[!?¿#@|]/g, "");
   const tmp = path.resolve(`tmp/${fileName}`);
 
   // Download video
