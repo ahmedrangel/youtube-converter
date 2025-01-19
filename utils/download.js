@@ -6,6 +6,8 @@ import { sharedOptions, useStorage } from "./helpers.js";
 
 const storage = useStorage();
 
+const toMp4Blob = (buffer) => new Blob([buffer], { type: "video/mp4" });
+
 export const download = async (req) => {
   const { url } = req.query;
   const { quality } = req.params;
@@ -16,7 +18,7 @@ export const download = async (req) => {
   // Check if video is cached
   const [cached, meta] = await Promise.all([storage.getItem(cacheKey), storage.getMeta(cacheKey)]);
   if (cached) {
-    return new Response(Buffer.from(cached.data), {
+    return new Response((toMp4Blob(Buffer.from(cached.data))), {
       headers: {
         "Content-Type": "video/mp4",
         "Content-Disposition": `attachment; filename="${meta.title}.mp4"`
@@ -61,7 +63,7 @@ export const download = async (req) => {
     storage.setMeta(cacheKey, { title: encodeURIComponent(title) })
   ]);
 
-  return new Response(file, {
+  return new Response(toMp4Blob(file), {
     headers: {
       "Content-Type": "video/mp4",
       "Content-Disposition": `attachment; filename="${encodeURIComponent(title)}.mp4"`
