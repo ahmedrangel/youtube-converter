@@ -30,11 +30,9 @@ export const download = async (req) => {
   const height = info.height;
   const type = width > height ? "horizontal" : "shorts";
   const qualityExists = info.formats.some((f) => f.format_note === `${quality}p`);
-  const title = `${info.title.replaceAll("/", "")}`;
   const bestVideoFormatter = !qualityExists ? "ext=mp4" : type === "horizontal" ? `height<=${quality}` : `width<=${quality}`;
   const f = `bestvideo[${bestVideoFormatter}][vcodec^=avc1]+bestaudio[ext=m4a]`;
-  // replace symbols with empty string
-  const fileName = `${title}${qualityExists ? `-${quality}p` : ""}`.replaceAll(" ", "").replace(/[!?¿#@|]/g, "");
+  const fileName = `${id}${qualityExists ? `-${quality}p` : ""}`;
   const tmp = path.resolve(`tmp/${fileName}`);
 
   // Download video
@@ -52,9 +50,8 @@ export const download = async (req) => {
   const blob = new Blob([file], { type: "video/mp4" });
   // Delete tmp file
   fs.unlinkSync(`${tmp}.mp4`);
-  await Promise.all([
-    storage.setItemRaw(cacheKey, blob)
-  ]);
+
+  await Promise.all([storage.setItemRaw(cacheKey, blob)]);
 
   return { url: itemUrl };
 };
