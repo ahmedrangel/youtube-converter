@@ -10,7 +10,7 @@ const router = AutoRouter({
   finally: [corsify]
 });
 
-router.get("/:quality/download?", download);
+router.post("/download?", download);
 router.all("*", () =>
   Response.json({ success: false, error: "Route not found" }, { status: 404 })
 );
