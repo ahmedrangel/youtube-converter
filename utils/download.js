@@ -43,7 +43,7 @@ export const download = async (req) => {
     // Download video
     await youtubeDL(url, {
       format,
-      output: `${tmp}`,
+      output: tmp,
       bufferSize: "16K",
       externalDownloader: "aria2c",
       externalDownloaderArgs: "-x 16 -s 16 -k 1M --file-allocation=none",
