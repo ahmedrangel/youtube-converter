@@ -30,8 +30,8 @@ importers:
         specifier: ^1.15.0
         version: 1.15.0(aws4fetch@1.0.20)
       youtube-dl-exec:
-        specifier: ^3.0.19
-        version: 3.0.19
+        specifier: ^3.0.20
+        version: 3.0.20
 
 packages:
 
@@ -1118,8 +1118,8 @@ packages:
     resolution: {integrity: sha512-wFH7+SEAcKfJpfLPkrgMPvvwnEtj8W4IurvEyrKsDleXnKLCDw71w8jltvfLa8Rm4qQxxT4jmDBYbJG/z7qoww==}
     engines: {node: '>=0.12'}
 
-  tinyspawn@1.4.0:
-    resolution: {integrity: sha512-KHimVU4KEw+3+EiM5SYS2Se7QjncbFwGj1b1WCwjcM4eraT6zaYu9hsLXIb84SBjPektB7H111kIDCEUl7mhKQ==}
+  tinyspawn@1.5.0:
+    resolution: {integrity: sha512-6413YnTe8Gr6fT2ynkajuwUEUk4+kNDFqmmlBl5dpC8jNbZeFw/5DY9NMpjKpN+IXLSBK9mHJvb2KstlcO0iDg==}
     engines: {node: '>= 18'}
 
   to-regex-range@5.0.1:
@@ -1270,8 +1270,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  youtube-dl-exec@3.0.19:
-    resolution: {integrity: sha512-TJ44nbF7gPwPbd3tNGWxzhTLDdhvfvh9TGnVaAtt90vCxsRVXHubVT6kF6KYa2QFnMRJyjevbQB+H6DLtPaHHw==}
+  youtube-dl-exec@3.0.20:
+    resolution: {integrity: sha512-FRPwz5jX3LVuRno5NAnqxm74DbzgOMp31+PvMsR5tQUiu7sRaX6sKzHlNK8op5U1eVd80DYhKNMWJbTm4D4YKA==}
     engines: {node: '>= 18'}
 
 snapshots:
@@ -2554,7 +2554,7 @@ snapshots:
       es5-ext: 0.10.64
       next-tick: 1.1.0
 
-  tinyspawn@1.4.0: {}
+  tinyspawn@1.5.0: {}
 
   to-regex-range@5.0.1:
     dependencies:
@@ -2693,12 +2693,12 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  youtube-dl-exec@3.0.19:
+  youtube-dl-exec@3.0.20:
     dependencies:
       binary-version-check: 6.1.0
       dargs: 7.0.0
       debug-logfmt: 1.2.3
       is-unix: 2.0.10
-      tinyspawn: 1.4.0
+      tinyspawn: 1.5.0
     transitivePeerDependencies:
       - supports-color

@@ -11,7 +11,7 @@
 		"eslint-plugin-import": "^2.31.0",
 		"itty-router": "^5.0.18",
 		"unstorage": "^1.15.0",
-		"youtube-dl-exec": "^3.0.19"
+		"youtube-dl-exec": "^3.0.20"
 	},
 	"pnpm": {
 		"ignoredBuiltDependencies": [
