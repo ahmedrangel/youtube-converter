@@ -5,22 +5,12 @@
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^4.2.0",
-		"@whatwg-node/server": "^0.10.3",
+		"@whatwg-node/server": "^0.10.5",
 		"aws4fetch": "^1.0.20",
-		"eslint": "^9.23.0",
+		"eslint": "^9.26.0",
 		"eslint-plugin-import": "^2.31.0",
 		"itty-router": "^5.0.18",
-		"unstorage": "^1.15.0",
+		"unstorage": "^1.16.0",
 		"youtube-dl-exec": "^3.0.20"
-	},
-	"pnpm": {
-		"ignoredBuiltDependencies": [
-			"es5-ext",
-			"youtube-dl-exec"
-		],
-		"onlyBuiltDependencies": [
-			"es5-ext",
-			"youtube-dl-exec"
-		]
 	}
 }
