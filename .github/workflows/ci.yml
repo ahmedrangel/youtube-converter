@@ -42,7 +42,7 @@ jobs:
           commands: |
             cd /apps/youtube-converter
             git fetch
-            git pull --rebase --autostash
+            git pull --rebase
             export NVM_DIR=/usr/local/nvm
             source /usr/local/nvm/nvm.sh
             corepack enable pnpm
