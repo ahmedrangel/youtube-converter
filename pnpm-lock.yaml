@@ -30,8 +30,8 @@ importers:
         specifier: ^1.16.0
         version: 1.16.0(aws4fetch@1.0.20)
       youtube-dl-exec:
-        specifier: ^3.0.20
-        version: 3.0.20
+        specifier: ^3.0.21
+        version: 3.0.21
 
 packages:
 
@@ -96,8 +96,8 @@ packages:
     resolution: {integrity: sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA==}
     engines: {node: '>=18.18'}
 
-  '@humanwhocodes/retry@0.4.2':
-    resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
+  '@humanwhocodes/retry@0.4.3':
+    resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
   '@jclem/logfmt2@2.4.3':
@@ -142,29 +142,29 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@typescript-eslint/scope-manager@8.31.1':
-    resolution: {integrity: sha512-BMNLOElPxrtNQMIsFHE+3P0Yf1z0dJqV9zLdDxN/xLlWMlXK/ApEsVEKzpizg9oal8bAT5Sc7+ocal7AC1HCVw==}
+  '@typescript-eslint/scope-manager@8.32.0':
+    resolution: {integrity: sha512-jc/4IxGNedXkmG4mx4nJTILb6TMjL66D41vyeaPWvDUmeYQzF3lKtN15WsAeTr65ce4mPxwopPSo1yUUAWw0hQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/types@8.31.1':
-    resolution: {integrity: sha512-SfepaEFUDQYRoA70DD9GtytljBePSj17qPxFHA/h3eg6lPTqGJ5mWOtbXCk1YrVU1cTJRd14nhaXWFu0l2troQ==}
+  '@typescript-eslint/types@8.32.0':
+    resolution: {integrity: sha512-O5Id6tGadAZEMThM6L9HmVf5hQUXNSxLVKeGJYWNhhVseps/0LddMkp7//VDkzwJ69lPL0UmZdcZwggj9akJaA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/typescript-estree@8.31.1':
-    resolution: {integrity: sha512-kaA0ueLe2v7KunYOyWYtlf/QhhZb7+qh4Yw6Ni5kgukMIG+iP773tjgBiLWIXYumWCwEq3nLW+TUywEp8uEeag==}
+  '@typescript-eslint/typescript-estree@8.32.0':
+    resolution: {integrity: sha512-pU9VD7anSCOIoBFnhTGfOzlVFQIA1XXiQpH/CezqOBaDppRwTglJzCC6fUQGpfwey4T183NKhF1/mfatYmjRqQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <5.9.0'
 
-  '@typescript-eslint/utils@8.31.1':
-    resolution: {integrity: sha512-2DSI4SNfF5T4oRveQ4nUrSjUqjMND0nLq9rEkz0gfGr3tg0S5KB6DhwR+WZPCjzkZl3cH+4x2ce3EsL50FubjQ==}
+  '@typescript-eslint/utils@8.32.0':
+    resolution: {integrity: sha512-8S9hXau6nQ/sYVtC3D6ISIDoJzS1NsCK+gluVhLN2YkBPX+/1wkwyUiDKnxRh15579WoOIyVWnoyIf3yGI9REw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
 
-  '@typescript-eslint/visitor-keys@8.31.1':
-    resolution: {integrity: sha512-I+/rgqOVBn6f0o7NDTmAPWWC6NuqhV174lfYvAm9fUaWeiefLdux9/YI3/nLugEn9L8fcSi0XmpKi/r5u0nmpw==}
+  '@typescript-eslint/visitor-keys@8.32.0':
+    resolution: {integrity: sha512-1rYQTCLFFzOI5Nl0c8LUpJT8HxpwVRn9E4CkMsYfuN6ctmQqExjSTzzSk0Tz2apmXy7WU6/6fyaZVVA/thPN+w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@whatwg-node/disposablestack@0.0.6':
@@ -344,8 +344,8 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  crossws@0.3.4:
-    resolution: {integrity: sha512-uj0O1ETYX1Bh6uSgktfPvwDiPYGQ3aI4qVsaC/LWpkIzGj1nUYm5FK3K+t11oOlpN01lGbprFCH4wBlKdJjVgw==}
+  crossws@0.3.5:
+    resolution: {integrity: sha512-ojKiDvcmByhwa8YYqbQI/hg7MEU0NC03+pSdEq4ZUnZR9xXpwk7E43SMNGkn+JxJGPFtNvQ48+vV2p+P1ml5PA==}
 
   d@1.0.2:
     resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
@@ -1470,8 +1470,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  youtube-dl-exec@3.0.20:
-    resolution: {integrity: sha512-FRPwz5jX3LVuRno5NAnqxm74DbzgOMp31+PvMsR5tQUiu7sRaX6sKzHlNK8op5U1eVd80DYhKNMWJbTm4D4YKA==}
+  youtube-dl-exec@3.0.21:
+    resolution: {integrity: sha512-z3WS7WAzzKt64N0d6NkwRe8wVwzd5ve5nXo5jg+mfRmp0FUV8p5I4IymkWI1LYRNcOcexlKcdTZSOB+yVJMMzw==}
     engines: {node: '>= 18'}
 
   zod-to-json-schema@3.24.5:
@@ -1479,8 +1479,8 @@ packages:
     peerDependencies:
       zod: ^3.24.1
 
-  zod@3.24.3:
-    resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
+  zod@3.24.4:
+    resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
 snapshots:
 
@@ -1546,7 +1546,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.1': {}
 
-  '@humanwhocodes/retry@0.4.2': {}
+  '@humanwhocodes/retry@0.4.3': {}
 
   '@jclem/logfmt2@2.4.3': {}
 
@@ -1562,8 +1562,8 @@ snapshots:
       express-rate-limit: 7.5.0(express@5.1.0)
       pkce-challenge: 5.0.0
       raw-body: 3.0.0
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
+      zod: 3.24.4
+      zod-to-json-schema: 3.24.5(zod@3.24.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -1583,7 +1583,7 @@ snapshots:
 
   '@stylistic/eslint-plugin@4.2.0(eslint@9.26.0)(typescript@5.8.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.31.1(eslint@9.26.0)(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.32.0(eslint@9.26.0)(typescript@5.8.3)
       eslint: 9.26.0
       eslint-visitor-keys: 4.2.0
       espree: 10.3.0
@@ -1599,17 +1599,17 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@typescript-eslint/scope-manager@8.31.1':
+  '@typescript-eslint/scope-manager@8.32.0':
     dependencies:
-      '@typescript-eslint/types': 8.31.1
-      '@typescript-eslint/visitor-keys': 8.31.1
+      '@typescript-eslint/types': 8.32.0
+      '@typescript-eslint/visitor-keys': 8.32.0
 
-  '@typescript-eslint/types@8.31.1': {}
+  '@typescript-eslint/types@8.32.0': {}
 
-  '@typescript-eslint/typescript-estree@8.31.1(typescript@5.8.3)':
+  '@typescript-eslint/typescript-estree@8.32.0(typescript@5.8.3)':
     dependencies:
-      '@typescript-eslint/types': 8.31.1
-      '@typescript-eslint/visitor-keys': 8.31.1
+      '@typescript-eslint/types': 8.32.0
+      '@typescript-eslint/visitor-keys': 8.32.0
       debug: 4.4.0
       fast-glob: 3.3.3
       is-glob: 4.0.3
@@ -1620,20 +1620,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.31.1(eslint@9.26.0)(typescript@5.8.3)':
+  '@typescript-eslint/utils@8.32.0(eslint@9.26.0)(typescript@5.8.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.26.0)
-      '@typescript-eslint/scope-manager': 8.31.1
-      '@typescript-eslint/types': 8.31.1
-      '@typescript-eslint/typescript-estree': 8.31.1(typescript@5.8.3)
+      '@typescript-eslint/scope-manager': 8.32.0
+      '@typescript-eslint/types': 8.32.0
+      '@typescript-eslint/typescript-estree': 8.32.0(typescript@5.8.3)
       eslint: 9.26.0
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/visitor-keys@8.31.1':
+  '@typescript-eslint/visitor-keys@8.32.0':
     dependencies:
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       eslint-visitor-keys: 4.2.0
 
   '@whatwg-node/disposablestack@0.0.6':
@@ -1853,7 +1853,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  crossws@0.3.4:
+  crossws@0.3.5:
     dependencies:
       uncrypto: 0.1.3
 
@@ -2113,7 +2113,7 @@ snapshots:
       '@eslint/plugin-kit': 0.2.8
       '@humanfs/node': 0.16.6
       '@humanwhocodes/module-importer': 1.0.1
-      '@humanwhocodes/retry': 0.4.2
+      '@humanwhocodes/retry': 0.4.3
       '@modelcontextprotocol/sdk': 1.11.0
       '@types/estree': 1.0.7
       '@types/json-schema': 7.0.15
@@ -2139,7 +2139,7 @@ snapshots:
       minimatch: 3.1.2
       natural-compare: 1.4.0
       optionator: 0.9.4
-      zod: 3.24.3
+      zod: 3.24.4
     transitivePeerDependencies:
       - supports-color
 
@@ -2356,7 +2356,7 @@ snapshots:
   h3@1.15.3:
     dependencies:
       cookie-es: 1.2.2
-      crossws: 0.3.4
+      crossws: 0.3.5
       defu: 6.1.4
       destr: 2.0.5
       iron-webcrypto: 1.2.1
@@ -3138,7 +3138,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  youtube-dl-exec@3.0.20:
+  youtube-dl-exec@3.0.21:
     dependencies:
       binary-version-check: 6.1.0
       dargs: 7.0.0
@@ -3148,8 +3148,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  zod-to-json-schema@3.24.5(zod@3.24.3):
+  zod-to-json-schema@3.24.5(zod@3.24.4):
     dependencies:
-      zod: 3.24.3
+      zod: 3.24.4
 
-  zod@3.24.3: {}
+  zod@3.24.4: {}
