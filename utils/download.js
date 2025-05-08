@@ -38,6 +38,7 @@ export const download = async (req) => {
     const bestVideoFormatter = !qualityExists ? "ext=mp4" : type === "horizontal" ? `height<=${quality}` : `width<=${quality}`;
     const format = `bestvideo[${bestVideoFormatter}][vcodec^=avc1]+bestaudio[ext=m4a]`;
     const fileName = `${id}${qualityExists ? `-${quality}p` : ""}`;
+    const tmpDir = path.resolve("tmp");
     const tmp = path.resolve(`tmp/${fileName}`);
 
     // Download video
@@ -54,8 +55,16 @@ export const download = async (req) => {
     const file = await fs.readFile(`${tmp}.mp4`);
     const blob = new Blob([file], { type: "video/mp4" });
 
+    const files = await fs.readdir(tmpDir);
+
     await Promise.all([
-      fs.unlink(`${tmp}.mp4`), // Delete tmp file
+      Promise.all(
+        files.map(async (file) => {
+          if (file.includes(fileName)) { // Delete all files that contain the fileName
+            await fs.unlink(path.resolve(`tmp/${file}`));
+          }
+        })
+      ),
       storage.setItemRaw(cacheKey, blob) // Save video to CDN
     ]);
 
