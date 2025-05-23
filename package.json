@@ -5,9 +5,9 @@
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^4.2.0",
-		"@whatwg-node/server": "^0.10.5",
+		"@whatwg-node/server": "^0.10.10",
 		"aws4fetch": "^1.0.20",
-		"eslint": "^9.26.0",
+		"eslint": "^9.27.0",
 		"eslint-plugin-import": "^2.31.0",
 		"itty-router": "^5.0.18",
 		"unstorage": "^1.16.0",
