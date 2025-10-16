@@ -5,13 +5,13 @@
 	},
 	"devDependencies": {
 		"@stylistic/eslint-plugin": "^5.4.0",
-		"@whatwg-node/server": "^0.10.12",
+		"@whatwg-node/server": "^0.10.13",
 		"aws4fetch": "^1.0.20",
 		"eslint": "^9.37.0",
 		"eslint-plugin-import": "^2.32.0",
 		"itty-router": "^5.0.22",
 		"unstorage": "^1.17.1",
-		"youtube-dl-exec": "^3.0.25"
+		"youtube-dl-exec": "^3.0.26"
 	},
-	"packageManager": "pnpm@10.18.1"
+	"packageManager": "pnpm@10.18.3"
 }
