@@ -41,9 +41,8 @@ jobs:
           service_token_secret: ${{ secrets.CLOUDFLARED_SERVICE_TOKEN_SECRET }}
           commands: |
             cd /apps/youtube-converter
-            git restore .
             git fetch
-            git pull
+            git pull --rebase
             export NVM_DIR=/usr/local/nvm
             source /usr/local/nvm/nvm.sh
             corepack enable pnpm
