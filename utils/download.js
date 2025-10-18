@@ -45,9 +45,9 @@ export const download = async (req) => {
     await youtubeDL(url, {
       format,
       output: tmp,
-      bufferSize: "16K",
+      bufferSize: "64K",
       externalDownloader: "aria2c",
-      externalDownloaderArgs: "-x 16 -s 16 -k 1M --file-allocation=none",
+      externalDownloaderArgs: "-x 32 -s 32 -k 5M --file-allocation=falloc --max-overall-download-limit=0 --max-download-limit=0 --split=32 --min-split-size=1M --max-connection-per-server=16 --optimize-concurrent-downloads=true",
       mergeOutputFormat: "mp4",
       ...sharedOptions
     });
