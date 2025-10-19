@@ -1,7 +1,10 @@
+import { readdir, unlink } from "node:fs/promises";
+import { resolve } from "node:path";
+import { loadEnvFile } from "node:process";
 import { createStorage } from "unstorage";
 import s3Driver from "unstorage/drivers/s3";
 
-process.loadEnvFile();
+loadEnvFile();
 
 const storage = createStorage({
   driver: s3Driver({
@@ -18,7 +21,17 @@ export const useStorage = () => storage;
 export const sharedOptions = {
   noWarnings: true,
   preferFreeFormats: true,
-  youtubeSkipDashManifest: true,
   noCheckCertificate: true,
   referer: "https://www.youtube.com/"
+};
+
+export const cleanDir = async (dir, fileName) => {
+  const files = await readdir(resolve(dir));
+  await Promise.all(
+    files.map(async (file) => {
+      if (file.includes(fileName)) { // Delete all files that contain the fileName
+        await unlink(resolve(`${dir}/${file}`));
+      }
+    })
+  );
 };

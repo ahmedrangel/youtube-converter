@@ -1,8 +1,8 @@
-import fs from "node:fs/promises";
-import path from "node:path";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import youtubeDL from "youtube-dl-exec";
 import { error } from "itty-router";
-import { sharedOptions, useStorage } from "./helpers.js";
+import { cleanDir, sharedOptions, useStorage } from "./helpers.js";
 
 const storage = useStorage();
 
@@ -38,35 +38,24 @@ export const download = async (req) => {
     const bestVideoFormatter = !qualityExists ? "ext=mp4" : type === "horizontal" ? `height<=${quality}` : `width<=${quality}`;
     const format = `bestvideo[${bestVideoFormatter}][vcodec^=avc1]+bestaudio[ext=m4a]`;
     const fileName = `${id}${qualityExists ? `-${quality}p` : ""}`;
-    const tmpDir = path.resolve("tmp");
-    const tmp = path.resolve(`tmp/${fileName}`);
+    const tmp = resolve(`tmp/${fileName}`);
 
     // Download video
     await youtubeDL(url, {
       format,
       output: tmp,
-      bufferSize: "64K",
-      externalDownloader: "aria2c",
-      externalDownloaderArgs: "-x 32 -s 32 -k 5M --file-allocation=falloc --max-overall-download-limit=0 --max-download-limit=0 --split=32 --min-split-size=1M --max-connection-per-server=16 --optimize-concurrent-downloads=true",
       mergeOutputFormat: "mp4",
       ...sharedOptions
     });
 
-    const file = await fs.readFile(`${tmp}.mp4`);
+    const file = await readFile(`${tmp}.mp4`);
     const blob = new Blob([file], { type: "video/mp4" });
 
-    const files = await fs.readdir(tmpDir);
-
     await Promise.all([
-      Promise.all(
-        files.map(async (file) => {
-          if (file.includes(fileName)) { // Delete all files that contain the fileName
-            await fs.unlink(path.resolve(`tmp/${file}`));
-          }
-        })
-      ),
       storage.setItemRaw(cacheKey, blob) // Save video to CDN
     ]);
+
+    cleanDir("tmp", fileName); // Clean temporary files (no await)
 
     return { url: itemUrl };
   } catch (err) {
