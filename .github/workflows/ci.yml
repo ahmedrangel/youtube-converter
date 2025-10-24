@@ -47,5 +47,6 @@ jobs:
             source /usr/local/nvm/nvm.sh
             corepack enable pnpm
             pnpm i
+            node node_modules/youtube-dl-exec/scripts/postinstall.js
             export PM2_HOME=/usr/local/share/pm2
             /usr/local/share/pnpm/pm2 restart youtube-converter --silent
