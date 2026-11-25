@@ -7,8 +7,8 @@ import { cleanDir, sharedOptions } from "./helpers.js";
 
 export const download = async (req) => {
   try {
-    const { url, quality } = await req.json();
-    // const { url, quality } = req.query;
+    // const { url, quality } = await req.json();
+    const { url, quality } = req.query;
     if (!url) return error(400, { error: "URL is required" });
     if (!quality) return error(400, { error: "Quality is required" });
 
