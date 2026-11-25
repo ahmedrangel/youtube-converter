@@ -1,14 +1,12 @@
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import ffmpegPath from "ffmpeg-static";
 import youtubeDL from "youtube-dl-exec";
 import { error } from "itty-router";
-import { cleanDir, sharedOptions, useStorage } from "./helpers.js";
-
-const storage = useStorage();
+import { cleanDir, sharedOptions } from "./helpers.js";
 
 export const download = async (req) => {
   try {
-    const cdnBase = "https://cdn.ahmedrangel.com";
     const { url, quality } = await req.json();
     // const { url, quality } = req.query;
     if (!url) return error(400, { error: "URL is required" });
@@ -17,12 +15,6 @@ export const download = async (req) => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?|live)\/|\S*?[?&]v=|shorts\/)?|youtu\.be\/)([a-zA-Z0-9_-]+)/;
     const id = url.match(regex)?.[1];
     if (!id) return error(400, { error: "Invalid URL" });
-
-    const cacheKey = `videos/youtube/${id}.mp4`;
-    const itemUrl = cdnBase + "/" + cacheKey + "?t=" + Date.now();
-
-    const exists = await storage.hasItem(cacheKey);
-    if (exists) return { url: itemUrl };
 
     console.log(`Downloading ${url}`);
     const info = await youtubeDL(url, {
@@ -40,24 +32,26 @@ export const download = async (req) => {
     const fileName = `${id}${qualityExists ? `-${quality}p` : ""}`;
     const tmp = resolve(`tmp/${fileName}`);
 
+    if (!ffmpegPath) throw new Error("FFmpeg is unavailable on this platform");
+
     // Download video
     await youtubeDL(url, {
       format,
       output: tmp,
       mergeOutputFormat: "mp4",
+      ffmpegLocation: ffmpegPath,
+      concurrentFragments: 8,
       ...sharedOptions
     });
 
     const file = await readFile(`${tmp}.mp4`);
     const blob = new Blob([file], { type: "video/mp4" });
 
-    await Promise.all([
-      storage.setItemRaw(cacheKey, blob) // Save video to CDN
-    ]);
+    await cleanDir("tmp", fileName);
 
-    cleanDir("tmp", fileName); // Clean temporary files (no await)
-
-    return { url: itemUrl };
+    return new Response(blob, {
+      headers: { "Content-Type": blob.type }
+    });
   } catch (err) {
     console.error(err);
     return error(500, { error: "An internal error occurred" });

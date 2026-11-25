@@ -1,12 +1,12 @@
+import { resolve } from "node:path";
+import { defineConfig, includeIgnoreFile } from "eslint/config";
 import stylistic from "@stylistic/eslint-plugin";
-import importPlugin from "eslint-plugin-import";
+import importPlugin from "eslint-plugin-import-x";
 
-export default [
+export default defineConfig([
+  includeIgnoreFile(resolve(".eslintignore")),
   {
     files: ["**/*.js", "**/*.mjs"],
-    ignores: [
-      "node_modules/**/*"
-    ],
     plugins: {
       "@stylistic": stylistic,
       "import": importPlugin
@@ -50,4 +50,4 @@ export default [
       "import/newline-after-import": ["error", { count: 1 }]
     }
   }
-];
+]);
