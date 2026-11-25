@@ -1,4 +1,4 @@
-import { mkdir, readFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import ffmpegPath from "ffmpeg-static";
 import youtubeDL from "youtube-dl-exec";
@@ -31,27 +31,36 @@ export const download = async (req) => {
     const format = `bestvideo[${bestVideoFormatter}][vcodec^=avc1]+bestaudio[ext=m4a]`;
     const fileName = `${id}${qualityExists ? `-${quality}p` : ""}`;
     const tmp = resolve(`tmp/${fileName}`);
+    const infoPath = resolve(`tmp/${fileName}.info.json`);
 
     if (!ffmpegPath) throw new Error("FFmpeg is unavailable on this platform");
 
-    // Download video
-    await youtubeDL(url, {
-      format,
-      output: tmp,
-      mergeOutputFormat: "mp4",
-      ffmpegLocation: ffmpegPath,
-      concurrentFragments: 8,
-      ...sharedOptions
-    });
+    await Promise.all([
+      mkdir(resolve("tmp"), { recursive: true }),
+      writeFile(infoPath, JSON.stringify(info))
+    ]);
 
-    const file = await readFile(`${tmp}.mp4`);
-    const blob = new Blob([file], { type: "video/mp4" });
+    try {
+      // Reuse the extracted metadata instead of resolving the URL again.
+      await youtubeDL("", {
+        loadInfoJson: infoPath,
+        format,
+        output: tmp,
+        mergeOutputFormat: "mp4",
+        ffmpegLocation: ffmpegPath,
+        concurrentFragments: 8,
+        ...sharedOptions
+      });
 
-    await cleanDir("tmp", fileName);
+      const file = await readFile(`${tmp}.mp4`);
+      const blob = new Blob([file], { type: "video/mp4" });
 
-    return new Response(blob, {
-      headers: { "Content-Type": blob.type }
-    });
+      return new Response(blob, {
+        headers: { "Content-Type": blob.type }
+      });
+    } finally {
+      await cleanDir("tmp", fileName);
+    }
   } catch (err) {
     console.error(err);
     return error(500, { error: "An internal error occurred" });
