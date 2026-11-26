@@ -43,8 +43,6 @@ jobs:
             cd /apps/youtube-converter
             git fetch
             git pull --rebase
-            export NVM_DIR=/usr/local/nvm
-            source /usr/local/nvm/nvm.sh
+            export PATH="/usr/local/share/pnpm/bin:$PATH"
             pnpm i
-            export PM2_HOME=/usr/local/share/pm2
-            /usr/local/share/pnpm/pm2 restart youtube-converter --silent
+            pm2 restart youtube-converter --silent
