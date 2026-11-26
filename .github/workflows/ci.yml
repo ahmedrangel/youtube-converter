@@ -45,4 +45,4 @@ jobs:
             git pull --rebase
             export PATH="/usr/local/share/pnpm/bin:$PATH"
             pnpm i
-            pm2 restart youtube-converter --silent
+            pm2 restart youtube-converter
